@@ -58,7 +58,13 @@ public class Main {
 */
 
         //List<WebElement> time = driver.findElements(By.cssSelector("td.shedule-weekday-time:nth-child(2)"));
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+
+        WebDriverWait wait = new WebDriverWait(driver,20);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("shedule-weekday-item")));
+
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         List<WebElement> time = driver.findElements(By.className("shedule-weekday-item"));
 
         List<WebElement> cabinets = driver.findElements(By.cssSelector("tr.shedule-weekday-row:nth-child(2) > td:nth-child(3) > dl:nth-child(1)"));
